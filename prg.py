@@ -9,30 +9,19 @@ for i in range(q):
     array_element = parent_array[array_num][element]
     print(array_element)'''
 
+def solution(n, i):
+    if n == 1:
+        return i
+    return solution(n-1, i+1)
+
 for _ in range(int(input())):
-    n, m = list(map(int, input().split()))
-    # print(n, m)
-    i = 1
-    z = n
-    while True:
-        if (z <= m):
-            ans = n*i
-            z = ans
-            i += 1
-            # print(ans, z, i)
-        else: break
-    # print(ans)
-    '''if (ans - m) < (n*(i+1) - m):
-        prev = n*(i-1)
-        # print(prev)
-    elif (ans - m) > (n*(i+1) - m):
-        prev = n*(i+1)
-        # print(prev)'''
-    if m == 1:
-        print(abs(m-n))
-    else:
-        if m%n != 0:
-            remaining = abs(m - (n * (i-1)))
-        else: remaining = 0
-        next_remaining = n - remaining
-        print(next_remaining) if (next_remaining < remaining) else print(remaining)
+    n, k = list(map(int, input().split()))
+    a = list(map(int, input().split()))
+    a.sort(reverse=True)
+    big = a[0]
+    a.pop(0)
+    add = sum(a)
+    ans = add
+    for i in a:
+        ans += solution(i, 0)
+    print(ans)
