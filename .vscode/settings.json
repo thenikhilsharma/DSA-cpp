@@ -1,11 +1,15 @@
 {
     "files.associations": {
+        "*.ejs": "html",
         "ostream": "cpp",
         "iostream": "cpp",
         "new": "cpp",
         "bitset": "cpp",
         "chrono": "cpp",
-        "algorithm": "cpp"
+        "algorithm": "cpp",
+        "array": "cpp",
+        "initializer_list": "cpp",
+        "utility": "cpp"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }
