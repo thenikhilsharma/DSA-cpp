@@ -1,3 +1,13 @@
+int heightofTree(int* root){
+    if (root != NULL){
+        return 0;
+    }
+    int left = heightofTree(root->left);
+    int right = heightofTree(root->right);
+    int ans = max(left, right) + 1
+    return ans;
+}
+
 int height(node* node){
     queue<node*> q;
     q.push(root);
