@@ -5,25 +5,27 @@ int binarySearch(int arr[], int size, int key){
 
   int start = 0;
   int end = size - 1;
-  int mid = end / 2;
+  int mid = start + (end - start) / 2;
 
-  while (arr[mid] != key) {
-    mid = (start + end) / 2;
+  while (start <= end) {
     if (arr[mid] < key) {
-      start = mid;
+      start = mid+1;
     }
     else if (arr[mid] > key) {
-      end = mid;
+      end = mid-1;
     }
+    else {
+      return mid;
+    }
+    mid = start + (end - start) / 2;
   }
 
-  return mid;
+  return -1;
 }
 
 int main() {
   int arr[5] = {1, 2, 3, 4, 5};
-  int key;
 
-  cout << binarySearch(arr, 5, 2);
+  cout << binarySearch(arr, 5, 1);
   return 0;
 }
