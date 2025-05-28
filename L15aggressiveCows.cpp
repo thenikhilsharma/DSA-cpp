@@ -1,3 +1,8 @@
+#include<iostream>
+using namespace std;
+#include<vector>
+#include<algorithm>
+
 bool isPossible(vector<int> &stalls, int k, int mid, int n) {
     
     int cowCount = 1;
