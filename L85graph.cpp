@@ -30,7 +30,7 @@ public:
       cout << i.first << "-> ";
       for (auto j : i.second)
       {
-        cout << i.second << " ";
+        cout << j << " ";
       }
     }
     cout << endl;
