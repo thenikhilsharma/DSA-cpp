@@ -16,7 +16,7 @@ void& fun(int a){
 
 int main() {
 
-    /*int i = 5;
+    int i = 5;
     int &j = i;
     cout << i << endl << j << endl; // point the same memory block but with different name
     cout << &i << endl << &j << endl;
@@ -30,7 +30,7 @@ int main() {
     // pass by reference
     cout << "Before " << n << endl;
     update2(n);
-    cout << "After " << n << endl;*/
+    cout << "After " << n << endl;
 
 
 
