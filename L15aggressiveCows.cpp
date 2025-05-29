@@ -1,18 +1,21 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
-#include<vector>
-#include<algorithm>
+#include <vector>
+#include <algorithm>
 
-bool isPossible(vector<int> &stalls, int k, int mid, int n) {
-    
+bool isPossible(vector<int> &stalls, int k, int mid, int n)
+{
+
     int cowCount = 1;
     int lastPos = stalls[0];
-    
-    for(int i=0; i<n; i++ ){
-        
-        if(stalls[i]-lastPos >= mid){
+
+    for (int i = 0; i < n; i++)
+    {
+
+        if (stalls[i] - lastPos >= mid)
+        {
             cowCount++;
-            if(cowCount==k)
+            if (cowCount == k)
             {
                 return true;
             }
@@ -25,14 +28,16 @@ bool isPossible(vector<int> &stalls, int k, int mid, int n) {
 int aggressiveCows(vector<int> &stalls, int k)
 {
     sort(stalls.begin(), stalls.end());
-   	int s = 0;
+    int s = 0;
     int n = stalls.size();
-    int e=stalls[n-1];
+    int e = stalls[n - 1];
     int ans = -1;
-    int mid = s + (e-s)/2;
-    
-    while(s<=e) {
-        if(isPossible(stalls, k, mid, n)) {
+    int mid = s + (e - s) / 2;
+
+    while (s <= e)
+    {
+        if (isPossible(stalls, k, mid, n))
+        {
             ans = mid;
             s = mid + 1;
         }
@@ -40,7 +45,7 @@ int aggressiveCows(vector<int> &stalls, int k)
         {
             e = mid - 1;
         }
-        mid = s + (e-s)/2;
+        mid = s + (e - s) / 2;
     }
     return ans;
 }
