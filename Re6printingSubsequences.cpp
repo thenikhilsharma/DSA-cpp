@@ -24,7 +24,7 @@ void print(vector<vector<int>> &res){
 }
 
 int main(){
-    vector<int> arr = {3, 1, 2};
+    vector<int> arr = {1, 1, 2};
     int index = 0;
     vector<vector<int>> res;
     vector<int> curr;
