@@ -20,6 +20,8 @@ int main(){
   d.push_front(2);
   d.push_front(4);
   print(d);
+  cout << d.front() << endl;
   d.pop_back();
+  print(d);
   d.erase(d.begin(), d.begin()+1); // erase(start index, end index)
 }
