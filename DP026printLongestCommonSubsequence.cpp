@@ -1,4 +1,4 @@
-//  lprint longest common sequence
+//  print longest common sequence
 
 #include<bits/stdc++.h>
 using namespace std;
