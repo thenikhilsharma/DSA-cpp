@@ -15,6 +15,8 @@ class node {
     }
 };
 
+
+// creating a tree with user input
 node* buildTree(node* root) {
 
     cout << "Enter the data: " << endl;
@@ -34,6 +36,7 @@ node* buildTree(node* root) {
 
 }
 
+// breadth-first search algorithm
 void levelOrderTraversal(node* root) {
     queue<node*> q;
     q.push(root);
@@ -65,6 +68,7 @@ void levelOrderTraversal(node* root) {
 
 }
 
+// Left Node Right
 void inorder(node* root) {
     //base case
     if(root == NULL) {
@@ -77,6 +81,7 @@ void inorder(node* root) {
 
 }
 
+// Node Left Right
 void preorder(node* root) {
     //base case
     if(root == NULL) {
@@ -89,6 +94,7 @@ void preorder(node* root) {
 
 }
 
+// Left Node Right
 void postorder(node* root) {
     //base case
     if(root == NULL) {
