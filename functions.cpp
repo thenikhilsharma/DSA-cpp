@@ -1,6 +1,7 @@
 #include <iostream>
 using namespace std;
 
+inline int incr(int x) {return x+1;} // inline function
 
 class solution {
 public:
