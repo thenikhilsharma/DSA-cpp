@@ -6,9 +6,9 @@ class Solution {
       int m = image[0].size();
       for (int i=0; i<4; i++) {
         int nrow = row + delRow[i];
-        int ncol = row + delCol[i];
+        int ncol = col + delCol[i];
         if (nrow >= 0 && nrow < n && ncol >= 0 && ncol < m && image[nrow][ncol] == iniColor && ans[nrow][ncol] != newColor) {
-          dfs (nrow, ncol, ans, image, newColor, delRow, delCol);
+          dfs(nrow, ncol, ans, image, newColor, delRow, delCol, iniColor);
         }
       }
     }
@@ -16,9 +16,11 @@ class Solution {
   public:
     vector<vector<int>> floodFill(vector<vector<int>> &image, int sr, int sc, int newColor) {
       int iniColor = image[sr][sc];
+      if (iniColor == newColor) return image;
       vector<vector<int>> ans = image; // copying image
       int delRow[] = {-1, 0, +1, 0};
       int delCol[] = {0, +1, 0, -1};
-      dfs(sr, sc, ans, image, delRow, delCol, iniColor);
+      dfs(sr, sc, ans, image, newColor, delRow, delCol, iniColor);
+      return ans;
     }
 };
