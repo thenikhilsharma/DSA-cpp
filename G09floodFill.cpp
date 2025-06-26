@@ -24,3 +24,41 @@ class Solution {
       return ans;
     }
 };
+
+// adjacency matrix sol
+class Solution {
+private:
+    void bfs(int node, vector<vector<int>>& isConnected, vector<bool>& visited) {
+        queue<int> q;
+        q.push(node);
+        visited[node] = true;
+
+        while (!q.empty()) {
+            int current = q.front();
+            q.pop();
+
+            for (int neighbor = 0; neighbor < isConnected.size(); neighbor++) {
+                if (isConnected[current][neighbor] == 1 && !visited[neighbor]) {
+                    visited[neighbor] = true;
+                    q.push(neighbor);
+                }
+            }
+        }
+    }
+
+public:
+    int findCircleNum(vector<vector<int>>& isConnected) {
+        int n = isConnected.size();
+        int provinces = 0;
+        vector<bool> visited(n, false);
+
+        for (int i = 0; i < n; i++) {
+            if (!visited[i]) {
+                provinces++;
+                bfs(i, isConnected, visited);
+            }
+        }
+
+        return provinces;
+    }
+};
