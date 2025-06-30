@@ -94,7 +94,7 @@ void preorder(node* root) {
 
 }
 
-// Left Node Right
+// Left Right Node
 void postorder(node* root) {
     //base case
     if(root == NULL) {
