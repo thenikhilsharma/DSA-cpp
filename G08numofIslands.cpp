@@ -1,5 +1,9 @@
 // 200. Number of Islands
 
+#include<iostream>
+#include<bits/stdc++.h>
+using namespace std;
+
 class Solution {
 private:
     void bfs(int row, int col, vector<vector<int>>& vis, vector<vector<char>>& grid) {
@@ -47,3 +51,12 @@ public:
         return cnt;
     }
 };
+
+int main() {
+    vector<vector<char>> grid = {{'1', '0', '1', '0'},
+                                {'1', '1', '1', '0'},
+                                {'1', '0', '1', '1'},
+                                {'0', '1', '1', '1'}};
+    Solution sol;
+    cout << "count is: " << sol.numIslands(grid) << endl;
+}
