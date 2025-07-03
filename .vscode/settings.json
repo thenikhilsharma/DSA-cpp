@@ -16,7 +16,10 @@
         "list": "cpp",
         "string": "cpp",
         "regex": "cpp",
-        "terminal.integrated.shell.windows": "C:\\Windows\\System32\\cmd.exe"
+        "terminal.integrated.shell.windows": "C:\\Windows\\System32\\cmd.exe",
+        "iomanip": "cpp",
+        "random": "cpp",
+        "iosfwd": "cpp"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }
