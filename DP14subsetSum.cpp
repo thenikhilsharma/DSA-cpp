@@ -7,7 +7,7 @@ class Solution1 {
 private:
   bool sub(int idx, int currentSum, vector<int> &arr, int sum) {
     if (currentSum == sum) return true; // Subset found
-    if (idx == arr.size()) return false; // Reached end without finding
+    if (idx == static_cast<int>(arr.size())) return false; // Reached end without finding
 
     if (sub(idx + 1, currentSum + arr[idx], arr, sum)) return true; // include element
     return sub(idx + 1, currentSum, arr, sum); // exclude element
