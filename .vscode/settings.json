@@ -19,7 +19,8 @@
         "terminal.integrated.shell.windows": "C:\\Windows\\System32\\cmd.exe",
         "iomanip": "cpp",
         "random": "cpp",
-        "iosfwd": "cpp"
+        "iosfwd": "cpp",
+        "functional": "cpp"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }
