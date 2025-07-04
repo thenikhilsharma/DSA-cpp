@@ -41,5 +41,7 @@ int main() {
   }
   cout << ans << endl;
   // optimised code
-  cout << sol2(nums);
+  cout << sol(nums) << endl;
+  // more optimised code
+  cout << sol2(nums) << endl;
 }
