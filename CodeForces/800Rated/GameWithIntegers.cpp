@@ -8,10 +8,10 @@ int main() {
   int t;
   cin >> t;
   while(t--) {
-    int n;
+    long long n;
     cin >> n;
-    if ((n-1) % 3 == 0 || (n+1) % 3 == 0) cout << "FIRST\n";
-    else cout << "SECOND\n";
+    if (n % 3 == 0) cout << "Second\n";
+    else cout << "First\n";
   }
 
   return 0;
