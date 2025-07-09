@@ -43,6 +43,29 @@ private:
 
 // tabulation - bottom up
 class Solution3 {
+  public:
+    int isSubsetSum(vector<int>& nums, int k) {
+      int n = nums.size();
+      vector<vector<bool>> dp(n, vector<bool>(k + 1, false));
+          
+      // base cases
+      for (int i = 0; i < n; i++) dp[i][0] = true; // empty subset
+        dp[0][nums[0]] = true; // first element
+          
+        for (int ind = 1; ind < n; ind++) {
+          for (int target = 1; target <= k; target++) {
+            bool notTake = dp[ind - 1][target];
+            bool take = false;
+            if (nums[ind] <= target) take = dp[ind - 1][target - nums[ind]];
+              dp[ind][target] = take || notTake;
+          }
+        }
+        return dp[n-1][k-1];
+    }
+};
+
+// tabulation - bottom up (space optimisation)
+class Solution4 {
 public:
   bool isSubsetSum(vector<int> &arr, int sum) {
     int n = arr.size();
@@ -66,6 +89,6 @@ public:
 int main() {
   vector<int> arr = {3, 34, 4, 12, 5, 2};
   int sum = 9;
-  Solution3 sol;
+  Solution4 sol;
   cout << sol.isSubsetSum(arr, sum);
 }
