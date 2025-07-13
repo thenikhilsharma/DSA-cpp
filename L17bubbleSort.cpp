@@ -1,29 +1,17 @@
 #include<iostream>
 using namespace std;
 
-void swap(int* arr, int first, int second){
-  int temp = arr[first];
-  arr[first] = arr[second];
-  arr[second] = temp;
-}
+// TC : O(N**2) worst case
+// TC : O(N) best case
 
-void printarr(int arr[], int size){
-  int i = 0;
-  while(i < size){
-    cout << arr[i] << "-";
-    i++;
-  }
-}
-
-void bubbleSort(int* arr, int size, int i, int j){
-  while (j--){
-    if (i < size - 1){
-      if (arr[i] > arr[i+1]){
-        swap(arr, i, i+1);
-      }
-      bubbleSort(arr, 6, i+1, j);
+void bubbleSort(int* arr, int size, int start, int end) {
+  if (end <= 0) return;
+  if (start < end) {
+    if (arr[start] > arr[start+1]) {
+      swap(arr[start], arr[start + 1]);
     }
-  }
+    bubbleSort(arr, size, start+1, end);
+  } else bubbleSort(arr, size, 0, end-1);
 }
 
 int main() {
@@ -32,5 +20,6 @@ int main() {
   int size = 6;
 
   bubbleSort(arr, size, 0, size-1);
-  printarr(arr, 6);
+  for (int &i : arr) cout << i << " ";
+  cout << endl;
 }

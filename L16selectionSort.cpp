@@ -1,33 +1,19 @@
-#include<iostream>
+#include<bits/stdc++.h>
 using namespace std;
 
-void selectionSort(int* arr, int size){ // O(n^2), use when array size is small
-  int i = 0;
-  int temp, min;
-  while (i < size) {
-    min = i;
-    for (int j=i; j<size; j++){
-      if (arr[j] < arr[i] && arr[j] < arr[min]){
-        min = j;
-      }
-    }
-    temp = arr[i];
-    arr[i] = arr[min];
-    arr[min] = temp;
-    i++;
-  }
+void selectionSort(vector<int> &arr, int idx = 0){ // O(n^2), use when array size is small
+  if (idx == static_cast<int>(arr.size())) return;
+  int min_index = min_element(arr.begin() + idx, arr.end()) - arr.begin();
+  swap(arr[idx], arr[min_index]);
+  selectionSort(arr, idx+1);
 }
 
 int main() {
 
-  int arr[9] = {29, 72, 98, 13, 87, 66, 52, 51, 36};
-  int size = 9;
+  vector<int> arr = {29, 72, 98, 13, 87, 66, 52, 51, 36};
+  selectionSort(arr);
+  for (auto i : arr) cout << i << " ";
+  cout << endl;
 
-  selectionSort(arr, size);
-
-  int i = 0;
-  while (i < size){
-    cout << arr[i] << "--";
-    i++;
-  }
+  return 0;
 }
