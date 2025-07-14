@@ -1,0 +1,1 @@
+{"name":"Local: I","url":"c:\\codes\\DSA-cpp\\CodeChef\\Starter194\\I.cpp","tests":[{"id":1752420584943,"input":"4\n3 2\n4 3\n2 1\n4 2\n","output":"001\n100\n010\n0100\n0011\n1000\n1010\n-1\n-1\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\codes\\DSA-cpp\\CodeChef\\Starter194\\I.cpp","group":"local","local":true}
