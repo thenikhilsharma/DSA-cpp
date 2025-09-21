@@ -16,7 +16,7 @@ class Solution {
 
         // Min-heap priority queue to select the minimum weight edge
         priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
-        vector<bool> inMST(V, false);
+        vector<bool> inMST(V, false); // visited array
         int totalCost = 0;
 
         // Start from the first vertex
