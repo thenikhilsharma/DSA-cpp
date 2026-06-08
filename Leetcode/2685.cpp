@@ -6,36 +6,54 @@ using namespace std;
 
 class Solution {
 private:
-    void dfs(int node, unordered_map<int, list<int>> &adj, vector<bool> &vis) {
-      vis[node] = true;
-
-      list<int> neighbours = adj[node];
-      for (auto neighbour : neighbours) {
-        if (!vis[neighbour]) dfs(neighbour, adj, vis);
-      }
+    void dfs(int node, unordered_map<int, unordered_set<int>> &adj, vector<bool> &vis, vector<int> &component) {
+        vis[node] = true;
+        component.push_back(node);
+        
+        for (auto neighbour : adj[node]) {
+            if (!vis[neighbour]) {
+                dfs(neighbour, adj, vis, component);
+            }
+        }
     }
 
 public:
     int countCompleteComponents(int n, vector<vector<int>>& edges) {
-      int res = 0;
-      vector<bool> vis(n, false);
-
-      // creating adjacency
-      unordered_map<int, list<int>> adj;
-      for (int i=0; i<edges.size(); i++) {
-        int u = edges[i][0];
-        int v = edges[i][1];
-        adj[u].push_back(v);
-        adj[v].push_back(u);
-      }
-
-      for (int i=0; i<n; i++){
-        if (!vis[i]) {
-          dfs(i, adj, vis);
-          res++;
+        int res = 0;
+        vector<bool> vis(n, false);
+        
+        // Create adjacency list using unordered_set for efficient lookup
+        unordered_map<int, unordered_set<int>> adj;
+        for (const auto &edge : edges) {
+            int u = edge[0];
+            int v = edge[1];
+            adj[u].insert(v);
+            adj[v].insert(u);
         }
-      }
-      return res;
+        
+        for (int i = 0; i < n; i++) {
+            if (!vis[i]) {
+                vector<int> component;
+                dfs(i, adj, vis, component);
+                
+                // Check if the component is complete
+                bool isComplete = true;
+                int m = component.size();
+                
+                // For a complete graph of m nodes, each node should have degree m-1
+                for (int node : component) {
+                    if (adj[node].size() != m - 1) {
+                        isComplete = false;
+                        break;
+                    }
+                }
+                
+                if (isComplete) {
+                    res++;
+                }
+            }
+        }
+        return res;
     }
 };
 

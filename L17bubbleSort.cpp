@@ -7,9 +7,7 @@ using namespace std;
 void bubbleSort(int* arr, int size, int start, int end) {
   if (end <= 0) return;
   if (start < end) {
-    if (arr[start] > arr[start+1]) {
-      swap(arr[start], arr[start + 1]);
-    }
+    if (arr[start] > arr[start+1]) swap(arr[start], arr[start + 1]);
     bubbleSort(arr, size, start+1, end);
   } else bubbleSort(arr, size, 0, end-1);
 }
