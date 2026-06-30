@@ -19,20 +19,16 @@ class node {
 // creating a tree with user input
 node* buildTree(node* root) {
 
-    cout << "Enter the data: " << endl;
+    cout << "Enter the data: ";
     int data;
     cin >> data;
-    root = new node(data);    
+    if(data == -1) return NULL;
 
-    if(data == -1) {
-        return NULL;
-    }
-
-    cout << "Enter data for inserting in left of " << data << endl;
+    root = new node(data);
     root->left = buildTree(root->left);
-    cout << "Enter data for inserting in right of " << data << endl;
     root->right = buildTree(root->right);
     return root;
+    cout << endl;
 
 }
 
@@ -49,20 +45,14 @@ void levelOrderTraversal(node* root) {
         if(temp == NULL) { 
             //purana level complete traverse ho chuka hai
             cout << endl;
-            if(!q.empty()) { 
-                //queue still has some child ndoes
-                q.push(NULL);
-            }  
+
+            if(!q.empty()) q.push(NULL); //queue still has some child ndoes
         }
         else{
             cout << temp -> data << " ";
-            if(temp ->left) {
-                q.push(temp ->left);
-            }
 
-            if(temp ->right) {
-                q.push(temp ->right);
-            }
+            if(temp ->left) q.push(temp ->left);
+            if(temp ->right) q.push(temp ->right);
         }
     }
 
@@ -153,8 +143,8 @@ int main() {
     //creating a Tree
     root = buildTree(root);
     //1 3 7 -1 -1 11 -1 -1 5 17 -1 -1 -1 
-    //level order
-    cout << "Printing the level order tracersal output " << endl;
+
+    cout << "level order tracersal is:  " << endl;
     levelOrderTraversal(root);
 
     cout << "inorder traversal is:  ";
