@@ -9,28 +9,17 @@ int longestValidParentheses(string s)
     int maxLen = 0;
     for (int i = 0; i < s.length(); ++i)
     {
-        if (s[i] == '(')
-        {
-            st.push(i);
-        }
-        else
-        {
+        if (s[i] == '(') st.push(i);
+        else {
             st.pop();
-            if (st.empty())
-            {
-                st.push(i);
-            }
-            else
-            {
-                maxLen = max(maxLen, i - st.top());
-            }
+            if (st.empty()) st.push(i);
+            else maxLen = max(maxLen, i - st.top());
         }
     }
     return maxLen;
 }
 
-int main()
-{
+int main() {
     string s = ")()())";
     cout << longestValidParentheses(s);
 }

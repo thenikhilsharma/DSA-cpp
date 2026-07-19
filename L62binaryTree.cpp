@@ -15,7 +15,6 @@ class node {
     }
 };
 
-
 // creating a tree with user input
 node* buildTree(node* root) {
 
@@ -46,7 +45,7 @@ void levelOrderTraversal(node* root) {
             //purana level complete traverse ho chuka hai
             cout << endl;
 
-            if(!q.empty()) q.push(NULL); //queue still has some child ndoes
+            if(!q.empty()) q.push(NULL); //queue still has some child nodes
         }
         else{
             cout << temp -> data << " ";
@@ -61,9 +60,7 @@ void levelOrderTraversal(node* root) {
 // Left Node Right
 void inorder(node* root) {
     //base case
-    if(root == NULL) {
-        return ;
-    }
+    if(!root) return;
 
     inorder(root->left);
     cout << root-> data << " ";
@@ -74,9 +71,7 @@ void inorder(node* root) {
 // Node Left Right
 void preorder(node* root) {
     //base case
-    if(root == NULL) {
-        return ;
-    }
+    if(!root) return;
 
     cout << root-> data << " ";
     preorder(root->left);
@@ -87,9 +82,7 @@ void preorder(node* root) {
 // Left Right Node
 void postorder(node* root) {
     //base case
-    if(root == NULL) {
-        return ;
-    }
+    if(!root) return;
 
     postorder(root->left);
     postorder(root->right);

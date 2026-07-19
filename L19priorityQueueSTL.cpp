@@ -12,6 +12,6 @@ int main(){
   maxi.push(4);
   maxi.push(1);
   maxi.push(6);
-  maxi.top(); maxi.pop(); // greatest element will pop or top first
+  cout << maxi.top(); maxi.pop(); // greatest element will pop or top first
   // opposite for min heap
 }

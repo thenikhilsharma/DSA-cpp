@@ -7,10 +7,10 @@ int main()
   char c = '1';
   int d = 0;
 
-  switch (d)
+  switch (n)
   {
   case '1':
-    cout << "thiis is case 1" << endl;
+    cout << "this is case 1" << endl;
     break;
 
   case 2:
