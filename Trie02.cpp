@@ -1,112 +1,96 @@
-// insert
-// erase
-// countWordsEqualTo
-// countWordsStartingWith
-
 #include <bits/stdc++.h>
 using namespace std;
 
-struct Node {
-  Node* children[26] = {nullptr};
-  int cnt = 0;
+struct Node
+{
+  Node *links[26];
+  int cntEndWith = 0;
+  int cntPrefix = 0;
 
-  bool containsKey(char ch) { return children[ch - 'a'] != NULL; }
-  void put(char ch, Node* node) { children[ch - 'a'] = node; }
-  Node* get(char ch) { return children[ch - 'a']; }
-  int setEnd() { return ++cnt; }
-  bool isEnd() { return cnt > 0; }
-  int countWordsFromNode(Node* node) {
-    int count = node -> cnt;
-    for (int i = 0; i < 26; i++) {
-      if (node->children[i] != nullptr) count += countWordsFromNode(node->children[i]);
-    }
-    return count;
-  }
+  bool containsKey(char ch) { return (links[ch - 'a'] != NULL); }
+  Node *get(char ch) { return links[ch - 'a']; }
+  void put(char ch, Node *node) { links[ch - 'a'] = node; }
+  void increaseEnd() { cntEndWith++; }
+  void increasePrefix() { cntPrefix++; }
+  void deleteEnd() { cntEndWith--; }
+  void reducePrefix() {  cntPrefix--; }
 };
 
 class Trie {
   private:
-    Node* root;
+    Node *root;
 
   public:
     Trie() { root = new Node(); }
 
     void insert(string word) {
-      Node* node = root;
-      for (char ch : word) {
-        if (!node -> containsKey(ch)) {
-          node -> put(ch, new Node());
+      Node *node = root;
+      for (auto ch : word)
+      {
+        if (!node->containsKey(ch)) node->put(ch, new Node());
+        node = node->get(ch);
+        node->increasePrefix();
+      }
+      node->increaseEnd();
+    }
+
+    int countWordsEqualTo(string word)
+    {
+      Node *node = root;
+      for (auto ch : word)
+      {
+        if (node->containsKey(ch)) node = node->get(ch);
+        else return 0;
+      }
+      return node->cntEndWith;
+    }
+
+    int countWordsStartingWith(string word)
+    {
+      Node *node = root;
+      for (auto ch : word)
+      {
+        if (node->containsKey(ch)) node = node->get(ch);
+        else return 0;
+      }
+      return node->cntPrefix;
+    }
+
+    void erase(string word)
+    {
+      Node *node = root;
+      for (auto ch : word)
+      {
+        if (node->containsKey(ch))
+        {
+          node = node->get(ch);
+          node->reducePrefix();
         }
-        node = node -> get(ch);
+        else return;
       }
-      node -> setEnd();
-    }
-
-    bool search(string word) {
-      Node* node = root;
-      for (char ch : word) {
-        if (!node -> containsKey(ch)) return false;
-        node = node -> get(ch);
-      }
-      return node -> isEnd();
-    }
-
-    bool startsWith(string prefix) {
-      Node* node = root;
-      for (char ch : prefix) {
-        if (!node -> containsKey(ch)) return false;
-        node = node -> get(ch);
-      }
-      return true;
-    }
-
-    void erase(string word) {
-      Node* node = root;
-      for (char ch : word) {
-        if (!node -> containsKey(ch)) return;
-        node = node -> get(ch);
-      }
-      if (node -> isEnd()) node -> cnt--;
-    }
-
-    int countWordsEqualTo(string word) {
-      Node* node = root;
-      for (char ch : word) {
-        if (!node -> containsKey(ch)) return 0;
-        node = node -> get(ch);
-      }
-      return node -> cnt;
-    }
-
-    int countWordsStartingWith(string prefix) {
-      Node* node = root;
-      for (char ch : prefix) {
-        if (!node -> containsKey(ch)) return 0;
-        node = node -> get(ch);
-      }
-      return node->countWordsFromNode(node);
+      node->deleteEnd();
     }
 };
 
-int main() {
-  int t;
-  cin >> t;
-  while (t--) {
-    Trie trie;
-    int n;
-    cin >> n;
-    while (n--) {
-      string op, word;
-      cin >> op >> word;
-      if (op == "insert") {
-        trie.insert(word);
-      } else if (op == "erase") {
-        trie.erase(word);
-      } else if (op == "countWordsEqualTo") {
-        cout << trie.countWordsEqualTo(word) << endl;
-      } else if (op == "countWordsStartingWith") {
-        cout << trie.countWordsStartingWith(word) << endl;
-      }
-    }
-  }
+int main()
+{
+  Trie trie;
+  trie.insert("apple");
+  trie.insert("apple");
+  cout << "Inserting strings 'apple' twice into Trie" << endl;
+  cout << "Count Words Equal to 'apple': ";
+  cout << trie.countWordsEqualTo("apple") << endl;
+  cout << "Count Words Starting With 'app': ";
+  cout << trie.countWordsStartingWith("app") << endl;
+  cout << "Erasing word 'apple' from trie" << endl;
+  trie.erase("apple");
+  cout << "Count Words Equal to 'apple': ";
+  cout << trie.countWordsEqualTo("apple") << endl;
+  cout << "Count Words Starting With 'app': ";
+  cout << trie.countWordsStartingWith("app") << endl;
+  cout << "Erasing word 'apple' from trie" << endl;
+  trie.erase("apple");
+  cout << "Count Words Starting With 'app': ";
+  cout << trie.countWordsStartingWith("app") << endl;
+  return 0;
 }
