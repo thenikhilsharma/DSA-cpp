@@ -1,0 +1,1 @@
+{"name":"Local: A","url":"c:\\codes\\DSA-cpp\\CodeForces\\round1111\\A.cpp","tests":[{"id":1785282335436,"input":"5\n1\n-1\n2\n1 -1\n2\n1 1\n5\n1 -1 1 -1 1\n6\n-1 1 -1 -1 -1 -1\n","output":"NO\nYES\nNO\nNO\nYES\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\codes\\DSA-cpp\\CodeForces\\round1111\\A.cpp","group":"local","local":true}
